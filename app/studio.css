@@ -1,0 +1,92 @@
+/* ── board ────────────────────────────────────────────────────────────── */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+         gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+         border-radius: var(--radius); overflow: hidden; margin: 1.8rem 0 2.4rem; }
+.stat { background: var(--raised); padding: 1rem 1.15rem; }
+.stat dt { font-size: .66rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: .25rem; font-weight: 500; }
+.stat dd { font-family: var(--display); font-size: 1.9rem; font-variant-numeric: tabular-nums; line-height: 1.05; }
+.stat dd small { font-size: .5em; color: var(--muted); font-family: 'Manrope', sans-serif; }
+.stat--amber dd { color: var(--amber); }
+
+/* ── shoot rows ───────────────────────────────────────────────────────── */
+.list { list-style: none; display: grid; gap: 1px; background: var(--rule);
+        border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
+.row { background: var(--raised); display: flex; align-items: center; gap: 1rem;
+       flex-wrap: wrap; padding: .75rem 1.05rem; }
+.row__thumb { width: 3.6rem; height: 2.6rem; object-fit: cover; border-radius: var(--radius); flex: none; background: var(--sunk); }
+.row__main { flex: 1 1 13rem; min-width: 0; }
+.row__title { font-weight: 600; font-size: .95rem; }
+.row__title a { color: inherit; text-decoration: none; }
+.row__title a:hover { color: var(--amber); }
+.row__sub { color: var(--muted); font-size: .8rem; margin-top: .1rem; }
+.row__when { font-size: .8rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.row--soon .row__when { color: var(--amber); font-weight: 600; }
+
+.chip { font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600;
+        padding: .22rem .5rem; border-radius: 999px; border: 1px solid var(--rule);
+        color: var(--muted); white-space: nowrap; }
+.chip--delivered { color: var(--ok); border-color: var(--ok); }
+.chip--editing, .chip--shot { color: var(--amber); border-color: var(--amber); }
+
+/* ── status rail ──────────────────────────────────────────────────────── */
+.rail { display: flex; list-style: none; margin: 1.4rem 0 1.8rem; flex-wrap: wrap; }
+.rail li { flex: 1 1 5rem; text-align: center; position: relative; padding-top: 1rem;
+           font-size: .63rem; letter-spacing: .11em; text-transform: uppercase;
+           font-weight: 600; color: var(--muted); }
+.rail li::before { content: ''; position: absolute; top: .25rem; left: 0; right: 0; height: 2px; background: var(--rule); }
+.rail li.done { color: var(--ink); }
+.rail li.done::before, .rail li.now::before { background: var(--amber); }
+.rail li.now { color: var(--amber); }
+.rail li.now::after { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%);
+                      width: 10px; height: 10px; border-radius: 50%; background: var(--amber);
+                      border: 2px solid var(--raised); }
+
+/* ── contact sheet ────────────────────────────────────────────────────── */
+.sheet { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+         gap: .8rem; list-style: none; margin: 1.2rem 0; }
+.plate { position: relative; background: var(--sunk); border-radius: var(--radius); overflow: hidden; }
+.plate img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block;
+             transition: transform .5s ease, filter .3s ease; }
+.plate:hover img { transform: scale(1.02); }
+.plate__cap { padding: .5rem .65rem; font-size: .76rem; color: var(--muted); display: flex;
+              justify-content: space-between; gap: .5rem; align-items: center; }
+
+/* A chosen frame is unmistakable: amber ring, amber star, and the caption
+   goes amber too. A client scanning sixty frames should see their picks at a
+   glance, not hunt for a subtle border. */
+.plate--picked { outline: 2px solid var(--amber); outline-offset: -2px; }
+.plate--picked .plate__cap { color: var(--amber); }
+.plate--picked img { filter: none; }
+.sheet--proof .plate:not(.plate--picked) img { filter: saturate(.85) brightness(.92); }
+
+.star { background: none; border: none; cursor: pointer; padding: .2rem;
+        font-size: 1.05rem; line-height: 1; color: var(--muted); }
+.star--on { color: var(--amber); }
+.star:hover { color: var(--amber); }
+
+.addform { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+           gap: .7rem; align-items: end; margin: 1.5rem 0 2rem;
+           background: var(--raised); border: 1px solid var(--rule);
+           border-radius: var(--radius); padding: 1rem; }
+.addform .btn { white-space: nowrap; }
+
+.group { margin-bottom: 2.2rem; }
+.group__head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: .7rem; }
+.group__count { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.group__count a { color: inherit; }
+
+.checks { list-style: none; display: grid; gap: 1px; background: var(--rule);
+          border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
+.check { background: var(--raised); display: flex; align-items: center; gap: .8rem; padding: .6rem 1rem; font-size: .92rem; }
+.check--done { color: var(--muted); }
+.check--done span { text-decoration: line-through; }
+.tick { appearance: none; width: 1.05rem; height: 1.05rem; flex: none; cursor: pointer;
+        border: 1px solid var(--muted); border-radius: 2px; background: transparent; padding: 0; }
+.tick--on { background: var(--amber); border-color: var(--amber); }
+
+.sharebox { background: var(--raised); border: 1px solid var(--rule); border-radius: var(--radius);
+            padding: .9rem 1.05rem; margin: 1.2rem 0; font-size: .87rem; }
+.sharebox code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--amber); word-break: break-all; }
+
+.empty { color: var(--muted); padding: 2.2rem 0; text-align: center; }
+.money { font-variant-numeric: tabular-nums; }

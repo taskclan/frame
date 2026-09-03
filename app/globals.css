@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600&family=Manrope:wght@300;400;500;600&display=swap');
+
+/* A darkroom, and one amber.
+   Photographers' tools go dark for a reason: a light interface changes how
+   you read an exposure. So this is dark first, and the light theme is the
+   deliberate second — the inverse of every other app here.
+   Amber means chosen. A client's star, a select count, the thing the
+   photographer is looking for. It is never decoration. */
+:root {
+  --room: #121113;
+  --raised: #1B1A1D;
+  --sunk: #0C0B0D;
+  --ink: #F0EDE8;
+  --muted: #928C86;
+  --rule: #2C2A2E;
+  --amber: #D39A3C;
+  --amber-soft: #2A2013;
+  --on-amber: #17130B;
+  --ok: #6FAE86;
+  --measure: 76rem;
+  --radius: 2px;
+  --display: 'Bodoni Moda', Georgia, serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --room: #F4F2EF;
+    --raised: #FFFFFF;
+    --sunk: #E9E6E1;
+    --ink: #17161A;
+    --muted: #6B655F;
+    --rule: #DFDAD3;
+    --amber: #A56F1C;
+    --amber-soft: #F7EEDF;
+    --on-amber: #FFFFFF;
+    --ok: #2F7A52;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: hidden; }
+
+body {
+  background: var(--room);
+  color: var(--ink);
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.shell { max-width: var(--measure); margin-inline: auto; padding: 0 1.5rem; }
+
+.masthead {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap; padding: 1.5rem 0 1.1rem;
+  border-bottom: 1px solid var(--rule);
+}
+.brand {
+  font-family: var(--display); font-weight: 600; font-size: 1.55rem;
+  letter-spacing: .04em; color: var(--ink); text-decoration: none;
+}
+.brand span { color: var(--amber); }
+
+.nav { display: flex; align-items: baseline; gap: 1.35rem; flex-wrap: wrap; }
+.nav a, .nav button {
+  font: inherit; font-size: .75rem; letter-spacing: .13em; text-transform: uppercase;
+  font-weight: 500; color: var(--muted); text-decoration: none;
+  background: none; border: none; padding: 0; cursor: pointer;
+}
+.nav a:hover, .nav button:hover { color: var(--ink); }
+
+main { padding: 2.4rem 0 5rem; }
+
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1.06; letter-spacing: -.01em; text-wrap: balance; margin-bottom: .35rem; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 1.3rem; margin-bottom: .8rem; }
+
+.eyebrow { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; font-weight: 500; }
+.lede { color: var(--muted); max-width: 54ch; }
+.note { color: var(--muted); font-size: .87rem; }
+
+.panel { max-width: 26rem; margin-inline: auto; }
+.fields { display: grid; gap: 1rem; margin: 1.4rem 0; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+label { display: grid; gap: .3rem; font-size: .68rem; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+input, select, textarea {
+  font: inherit; font-size: .95rem; font-weight: 400;
+  text-transform: none; letter-spacing: normal;
+  color: var(--ink); background: var(--sunk);
+  border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: .6rem .7rem; width: 100%;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--amber); }
+
+.btn {
+  font: inherit; font-size: .72rem; letter-spacing: .13em; text-transform: uppercase; font-weight: 600;
+  background: var(--amber); color: var(--on-amber); border: 1px solid var(--amber);
+  border-radius: var(--radius); padding: .68rem 1.35rem; cursor: pointer;
+}
+.btn:hover { filter: brightness(1.12); }
+.btn--quiet { background: transparent; color: var(--muted); border-color: var(--rule); font-weight: 500; }
+.btn--quiet:hover { color: var(--ink); border-color: var(--ink); filter: none; }
+.btn--small { padding: .35rem .6rem; font-size: .66rem; }
+
+.error { background: var(--amber-soft); color: var(--amber); border: 1px solid var(--amber);
+         border-radius: var(--radius); padding: .65rem .9rem; font-size: .9rem; margin-bottom: 1rem; }
+
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+.colophon { border-top: 1px solid var(--rule); padding: 1.8rem 0 3rem; color: var(--muted); font-size: .82rem; }
+.code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .14em; color: var(--amber); }
+
+@media (max-width: 640px) { .row2 { grid-template-columns: 1fr; } }
