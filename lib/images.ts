@@ -34,6 +34,28 @@ export const AI_LEAK = 'https://ydpfystsgydquencpfyy.supabase.co/storage/v1/obje
  * would be a strange first impression.
  */
 export const SEED_GALLERY: Record<string, { id: string; caption: string }[]> = {
+  wedding: [
+    { id: 'photo-1519741497674-611481863552', caption: 'Bouquet, before the ceremony' },
+    { id: 'photo-1520854221256-17451cc331bf', caption: 'Hands' },
+    { id: 'photo-1492633423870-43d1cd2775eb', caption: 'Portrait, garden' },
+    { id: 'photo-1469334031218-e382a71b716b', caption: 'Golden hour' },
+  ],
+  birthday: [
+    { id: 'photo-1530103862676-de8c9debad1d', caption: 'The room, before anyone arrived' },
+    { id: 'photo-1464349095431-e9a21285b5f3', caption: 'The cake, lit' },
+    { id: 'photo-1558636508-e0db3814bd1d', caption: 'Written by hand' },
+    { id: 'photo-1519671482749-fd09be7ccebf', caption: 'The toast' },
+  ],
+  company: [
+    { id: 'photo-1587825140708-dfaf72ae4b04', caption: 'Keynote, wide' },
+    { id: 'photo-1531058020387-3be344556be6', caption: 'The hall filling up' },
+    { id: 'photo-1540575467063-178a50c2df87', caption: 'Audience, third row' },
+    { id: 'photo-1543269865-cbf427effbad', caption: 'Breakout, informal' },
+  ],
+  graduation: [
+    { id: 'photo-1627556704302-624286467c65', caption: 'Cap and tassel' },
+    { id: 'photo-1571260899304-425eee4c7efc', caption: 'On the lawn afterwards' },
+  ],
   portrait: [
     { id: 'photo-1499996860823-5214fcc65f8f', caption: 'Frame 12 — natural light' },
     { id: 'photo-1506794778202-cad84cf45f1d', caption: 'Frame 18 — low key' },
@@ -42,23 +64,35 @@ export const SEED_GALLERY: Record<string, { id: string; caption: string }[]> = {
     { id: 'photo-1517841905240-472988babdf9', caption: 'Frame 37 — colour wall' },
     { id: 'photo-1503342217505-b0a15ec3261c', caption: 'Frame 44 — full length' },
   ],
-  wedding: [
-    { id: 'photo-1519741497674-611481863552', caption: 'Bouquet, before the ceremony' },
-    { id: 'photo-1520854221256-17451cc331bf', caption: 'Hands' },
-    { id: 'photo-1492633423870-43d1cd2775eb', caption: 'Portrait, garden' },
-    { id: 'photo-1469334031218-e382a71b716b', caption: 'Golden hour' },
-  ],
   editorial: [
     { id: 'photo-1515886657613-9f3515b0c78f', caption: 'Look 1' },
     { id: 'photo-1502823403499-6ccfcf4fb453', caption: 'Look 3 — gelled' },
     { id: 'photo-1469334031218-e382a71b716b', caption: 'Look 5' },
   ],
-  landscape: [
-    { id: 'photo-1524863479829-916d8e77f114', caption: 'Ridge, first light' },
-    { id: 'photo-1600486913747-55e5470d6f40', caption: 'Portrait on location' },
-  ],
   product: [
     { id: 'photo-1516035069371-29a1b244cc32', caption: 'Hero, on black' },
     { id: 'photo-1441986300917-64674bd600d8', caption: 'In situ' },
   ],
+  landscape: [
+    { id: 'photo-1524863479829-916d8e77f114', caption: 'Ridge, first light' },
+    { id: 'photo-1600486913747-55e5470d6f40', caption: 'Portrait on location' },
+  ],
+};
+
+/**
+ * The face of each collection, for a studio that has not shot one yet.
+ *
+ * A collection with real work shows its own most recent frame instead — this
+ * is only what an empty shelf looks like, and an empty shelf that shows
+ * nothing tells a photographer nothing about what the collection is for.
+ */
+export const KIND_COVER: Record<string, string> = {
+  wedding: 'photo-1519741497674-611481863552',
+  birthday: 'photo-1530103862676-de8c9debad1d',
+  company: 'photo-1587825140708-dfaf72ae4b04',
+  graduation: 'photo-1627556704302-624286467c65',
+  portrait: 'photo-1506794778202-cad84cf45f1d',
+  editorial: 'photo-1515886657613-9f3515b0c78f',
+  product: 'photo-1516035069371-29a1b244cc32',
+  landscape: 'photo-1524863479829-916d8e77f114',
 };

@@ -90,3 +90,30 @@
 
 .empty { color: var(--muted); padding: 2.2rem 0; text-align: center; }
 .money { font-variant-numeric: tabular-nums; }
+
+/* ── collections ──────────────────────────────────────────────────────── */
+.collections { list-style: none; display: grid; gap: 1.1rem; margin-top: 1.8rem;
+               grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); }
+.coll a { display: block; text-decoration: none; color: inherit;
+          background: var(--raised); border: 1px solid var(--rule);
+          border-radius: var(--radius); overflow: hidden; height: 100%; }
+.coll a:hover { border-color: var(--amber); }
+.coll__frame { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--sunk); }
+.coll__frame img { width: 100%; height: 100%; object-fit: cover; display: block;
+                   transition: transform .5s ease; }
+.coll a:hover .coll__frame img { transform: scale(1.03); }
+.coll__body { display: block; padding: .85rem 1rem 1.1rem; }
+.coll__name { display: block; font-family: var(--display); font-weight: 600; font-size: 1.15rem; }
+.coll__blurb { display: block; color: var(--muted); font-size: .86rem; margin-top: .15rem; }
+.coll__meta { display: block; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+              color: var(--amber); margin-top: .55rem; font-weight: 600; }
+
+/* An empty collection is shown, not hidden — but it should not look like
+   work. The cover greys back and the label stops being amber. */
+.coll--empty .coll__frame img { filter: grayscale(1) brightness(.75); }
+.coll--empty .coll__meta { color: var(--muted); font-weight: 500; }
+.coll--empty a:hover .coll__frame img { filter: grayscale(.6) brightness(.85); }
+
+.band { width: 100%; aspect-ratio: 16 / 5; overflow: hidden; border-radius: var(--radius);
+        border: 1px solid var(--rule); }
+.band img { width: 100%; height: 100%; object-fit: cover; display: block; }
