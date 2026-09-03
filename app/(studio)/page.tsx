@@ -3,7 +3,7 @@ import { query } from '@/lib/db';
 import { daysUntil, formatDate } from '@/lib/dates';
 import { STATUS_LABEL, nextStatus, type Status } from '@/lib/shoots';
 import { Landing } from './landing';
-import { advanceShootAction } from './studio-actions';
+import { advanceShootAction } from '@/app/studio-actions';
 
 export const dynamic = 'force-dynamic';
 

@@ -47,7 +47,7 @@ export default async function GalleryPage({ params }: { params: { token: string 
 
   return (
     <>
-      <p className="eyebrow">{s.studio_name}</p>
+      <p className="eyebrow" style={{ letterSpacing: '.24em' }}>{s.studio_name}</p>
       <h1>{s.title}</h1>
       <p className="lede">
         {KIND_LABEL[s.kind as keyof typeof KIND_LABEL] ?? s.kind} · {formatDate(s.shoot_date)}

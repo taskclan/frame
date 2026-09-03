@@ -1,6 +1,6 @@
-import './globals.css';
-import './studio.css';
-import './landing.css';
+import '../globals.css';
+import '../studio.css';
+import '../landing.css';
 import { currentStudio } from '@/lib/current';
 import { signOutAction } from '@/app/actions';
 
