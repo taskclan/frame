@@ -3,7 +3,15 @@ import { createHmac, timingSafeEqual } from 'crypto';
 export const SESSION_COOKIE = 'frame_session';
 
 function secret(): string {
-  return process.env.SESSION_SECRET || 'frame-development-secret-not-for-production';
+  const configured = process.env.SESSION_SECRET;
+  if (configured) return configured;
+  // Fail closed: the cookie is `userId.HMAC(userId)`, so a known signing key
+  // lets anyone forge any user's session. Never sign with a constant in
+  // production — require SESSION_SECRET and throw when it is missing.
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error('SESSION_SECRET must be set in production');
+  }
+  return 'frame-development-secret-not-for-production';
 }
 
 export function signSession(userId: number): string {
