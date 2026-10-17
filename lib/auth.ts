@@ -27,9 +27,15 @@ export async function userByEmail(email: string): Promise<(User & { hash: string
 
 /** The code a second photographer types to join the studio. Read aloud, so no I, O, 0 or 1. */
 export function studioCode(): string {
+  // A join code grants studio membership, so it is a credential and comes from
+  // the same CSPRNG as the gallery token — never Math.random, which is
+  // predictable and recoverable from a single observed code. The alphabet is
+  // 32 letters = 5 bits each, so a random byte masks cleanly to one letter with
+  // no bias; eight letters is ~40 bits, well past guessing a permanent code.
   const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  const bytes = randomBytes(8);
   let out = '';
-  for (let i = 0; i < 6; i += 1) out += alphabet[Math.floor(Math.random() * alphabet.length)];
+  for (let i = 0; i < bytes.length; i += 1) out += alphabet[bytes[i] & 31];
   return out;
 }
 
